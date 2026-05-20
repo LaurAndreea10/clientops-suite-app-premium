@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { activity, automationRules, bookings, projects, quote, revenueSeries, type LeadStage, type TaskStatus } from '@/mocks/seed/data';
 import { useAppStore } from '@/store/useAppStore';
@@ -35,11 +35,11 @@ function healthClass(health: string) {
   return 'bg-emerald-50 text-emerald-700 ring-emerald-200';
 }
 
-function Pill({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+function Pill({ children, className = '' }: { children: ReactNode; className?: string }) {
   return <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold ring-1 ${className}`}>{children}</span>;
 }
 
-function Card({ title, eyebrow, action, children, className = '' }: { title: string; eyebrow?: string; action?: React.ReactNode; children: React.ReactNode; className?: string }) {
+function Card({ title, eyebrow, action, children, className = '' }: { title: string; eyebrow?: string; action?: ReactNode; children: ReactNode; className?: string }) {
   return (
     <section className={`rounded-3xl border border-slate-200/80 bg-white/90 p-5 shadow-sm shadow-slate-200/60 backdrop-blur ${className}`}>
       <div className="mb-4 flex items-start justify-between gap-3">
@@ -70,7 +70,7 @@ function Metric({ label, value, detail, tone = 'indigo' }: { label: string; valu
   );
 }
 
-function Shell({ children }: { children: React.ReactNode }) {
+function Shell({ children }: { children: ReactNode }) {
   const { commandOpen, setCommandOpen, toggleCommand, lastAction, resetDemo } = useAppStore();
   const navigate = useNavigate();
 
