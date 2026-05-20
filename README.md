@@ -1,16 +1,23 @@
 # ClientOps Suite Premium
 
-> A zero-cost SaaS command center for client operations: CRM pipeline, bookings, delivery projects, quote builder, automations, analytics and audit trail.
+> A zero-cost SaaS command center for client operations: CRM pipeline, bookings, delivery projects, quote builder, automations, analytics, audit trail and client health scoring.
 
 [![Built with React](https://img.shields.io/badge/React-18-61dafb?style=flat-square)](#tech-stack)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?style=flat-square)](#tech-stack)
 [![Vite](https://img.shields.io/badge/Vite-5-646cff?style=flat-square)](#tech-stack)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-4ade80?style=flat-square)](#deploy)
+[![Zero Backend](https://img.shields.io/badge/Zero_backend-localStorage-22d3ee?style=flat-square)](#premium-module-client-health-cockpit)
 
 ## Live Demo
 
 ```txt
 https://laurandreea10.github.io/clientops-suite-app-premium/
+```
+
+Premium module:
+
+```txt
+https://laurandreea10.github.io/clientops-suite-app-premium/client-health-cockpit.html
 ```
 
 ## Project Origin
@@ -53,6 +60,27 @@ Recharts-powered revenue, pipeline and stage distribution views.
 
 Audit trail for lead movement, quote creation, booking confirmation and project health changes.
 
+### Premium module: Client Health Cockpit
+
+A standalone, GitHub Pages-safe premium module in `public/client-health-cockpit.html`.
+
+It adds retention and account-health thinking on top of the CRM:
+
+- health score from operational signals
+- churn risk tier
+- expansion potential
+- renewal countdown
+- blocked-task and invoice-risk inputs
+- recommended actions
+- generated client playbook
+- saved monitored accounts via `localStorage`
+- JSON export
+- RO/EN toggle
+- dark/light toggle
+- no backend, no paid API, no external services
+
+This module is intentionally static so it stays zero-cost and deploys with the existing Vite build. Vite copies files from `public/` into `dist/`, so the page is available at `/client-health-cockpit.html` after GitHub Pages deploy.
+
 ## Premium UX details
 
 - `⌘K / Ctrl+K` command palette
@@ -62,6 +90,7 @@ Audit trail for lead movement, quote creation, booking confirmation and project 
 - Accessible focus states and reduced-motion support
 - Copy-ready quote report
 - Reset demo state action
+- Client Health Cockpit as premium retention layer
 - No backend required
 
 ## Tech Stack
@@ -72,6 +101,7 @@ Audit trail for lead movement, quote creation, booking confirmation and project 
 - **Zustand** for interactive state
 - **Recharts** for analytics
 - **Tailwind CSS** for styling
+- **Vanilla JS** for the static premium cockpit module
 - **GitHub Actions + GitHub Pages** for deploy
 
 ## Run locally
@@ -79,6 +109,13 @@ Audit trail for lead movement, quote creation, booking confirmation and project 
 ```bash
 npm install
 npm run dev
+```
+
+Then open:
+
+```txt
+http://localhost:5173/
+http://localhost:5173/client-health-cockpit.html
 ```
 
 ## Build
@@ -94,6 +131,7 @@ The repo is configured for GitHub Pages with:
 - `HashRouter`
 - `vite.config.ts` using `base: './'`
 - `.github/workflows/deploy.yml`
+- static premium module inside `public/`
 
 Push to `main` and GitHub Actions will build and publish the `dist` folder.
 
@@ -108,10 +146,12 @@ Push to `main` and GitHub Actions will build and publish the `dist` folder.
 - [x] Automation hub
 - [x] Analytics charts
 - [x] Activity feed
+- [x] Client Health Cockpit: retention score, churn risk, expansion playbook
 - [ ] Role-based views: Owner / Sales / Delivery
 - [ ] JSON export for quotes and activity
 - [ ] Printable quote PDF flow
-- [ ] Theme toggle
+- [ ] Theme toggle inside the React shell
+- [ ] Import CSV for accounts and renewal risk
 
 ## Portfolio positioning
 
@@ -120,6 +160,7 @@ This project demonstrates front-end product thinking, not just UI styling:
 - data structure → user workflow
 - pipeline → quote → delivery continuity
 - status → risk → action visibility
+- account health → retention playbooks
 - zero-cost deployment constraints
 - recruiter-friendly proof of work
 
